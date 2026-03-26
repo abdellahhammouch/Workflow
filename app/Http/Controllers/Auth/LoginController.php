@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         if (! Auth::attempt($credentials, $remember)) {
             throw ValidationException::withMessages([
-                'email' => __('Ces identifiants sont invalides.'),
+                'email' => __('These credentials do not match our records.'),
             ]);
         }
 
