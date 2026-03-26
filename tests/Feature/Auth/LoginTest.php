@@ -15,12 +15,12 @@ class LoginTest extends TestCase
         $response = $this->get('/login');
 
         $response->assertOk();
-        $response->assertSee('Se connecter');
+        $response->assertSee('Sign In');
     }
 
     public function test_guest_is_redirected_to_login_when_accessing_dashboard(): void
     {
-        $response = $this->get('/');
+        $response = $this->get('/dashboard');
 
         $response->assertRedirect('/login');
     }
@@ -36,7 +36,7 @@ class LoginTest extends TestCase
             'password' => 'secret-pass',
         ]);
 
-        $response->assertRedirect('/');
+        $response->assertRedirect('/dashboard');
         $this->assertAuthenticatedAs($user);
     }
 
